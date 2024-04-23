@@ -16,13 +16,14 @@ motor_commands = {
     "l2": (None, 6),
 }
 # Setup Serial connection to Arduino (update port and baudrate according to your setup)
-arduino = serial.Serial(port="/dev/ttyACM1", baudrate=9600, timeout=1)
+arduino = serial.Serial(port="/dev/ttyACM0", baudrate=9600, timeout=1)
 time.sleep(0.5)  # Wait for the connection to establish
 
 
 def send_command(command):
     arduino.write(f"{command}\n".encode())
-    print(f"Sent: {command}")
+    with open("logs.txt", "a") as file:
+        file.write(f"{command}\n")
 
 
 class TextDisplay(Static):
@@ -46,7 +47,7 @@ class MotorControl(App):
                 Button("Motor 4 CW", id="motor4_cw", variant="primary"),
                 Button("Motor 5 CW", id="motor5_cw", variant="primary"),
                 Button("Motor 6 CW", id="motor6_cw", variant="primary"),
-                Button("Motor 7 CW", id="motor7_cw", variant="primary"),
+                Button("Close gripper", id="motor7_cw", variant="primary"),
             ),
             VerticalScroll(
                 Button("Motor 1 CCW", id="motor1_ccw", variant="primary"),
@@ -55,7 +56,7 @@ class MotorControl(App):
                 Button("Motor 4 CCW", id="motor4_ccw", variant="primary"),
                 Button("Motor 5 CCW", id="motor5_ccw", variant="primary"),
                 Button("Motor 6 CCW", id="motor6_ccw", variant="primary"),
-                Button("Motor 7 CCW", id="motor7_ccw", variant="primary"),
+                Button("Open gripper", id="motor7_ccw", variant="primary"),
             ),
             VerticalScroll(
                 Button("Stop All Motors", id="stop_all", variant="error"),
@@ -106,10 +107,10 @@ class MotorControl(App):
             send_command("M6CCW")
         elif button_id == "motor7_cw":
             text_display.update("Rotating Motor 7 clockwise")
-            send_command("M7CW")
+            send_command("M7C")
         elif button_id == "motor7_ccw":
             text_display.update("Rotating Motor 7 counterclockwise")
-            send_command("M7CW")
+            send_command("M7O")
         elif button_id == "stop_all":
             text_display.update("Stopping all motors")
             for i in range(1, 7):
