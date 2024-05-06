@@ -1,3 +1,0 @@
-Instantiated with filepath=None->None, scale=[1.0, 1.0, 1.0], mesh=<bpy_struct, Mesh("Robotic_Collaborative_Robot_Arm_EB-147") at 0x34c0e3208>, meshname=Robotic_Collaborative_Robot_Arm_EB-147, material=None, mesh_orientation=None, {}
-->trying export of <bpy_struct, Mesh("Robotic_Collaborative_Robot_Arm_EB-147") at 0x34c0e3208> to /Users/ammar/Robotic_Collaborative_Robot_Arm_EB-15/unnamed/meshes/stl/Robotic_Collaborative_Robot_Arm_EB-147.stl
-->wrote stl to /Users/ammar/Robotic_Collaborative_Robot_Arm_EB-15/unnamed/meshes/stl/Robotic_Collaborative_Robot_Arm_EB-147.stl from bpy_types.Mesh
