@@ -1,42 +1,39 @@
 #include <AccelStepper.h>
 #include <Servo.h>
 
-
 // Number of motors
 const int numMotors = 6;
 
 // Define motor pins
 const int motorPins[numMotors][2] = {
-  {2, 3},  // Motor 1: STEP pin 2, DIR pin 3
-  {4, 5},  // Motor 2: STEP pin 4, DIR pin 5
-  {6, 7},  // Motor 3: STEP pin 6, DIR pin 7
-  {8, 9},  // Motor 4: STEP pin 8, DIR pin 9
-  {10, 11}, // Motor 5: STEP pin 10, DIR pin 11
-  {12, 13} // Motor 6: STEP pin 12, DIR pin 13
+    {2, 3},   // Motor 1: STEP pin 2, DIR pin 3
+    {4, 5},   // Motor 2: STEP pin 4, DIR pin 5
+    {6, 7},   // Motor 3: STEP pin 6, DIR pin 7
+    {8, 9},   // Motor 4: STEP pin 8, DIR pin 9
+    {10, 11}, // Motor 5: STEP pin 10, DIR pin 11
+    {12, 13}  // Motor 6: STEP pin 12, DIR pin 13
 };
 
-const int servoClosePosition = 0; // 5
+const int servoClosePosition = 0;  // 5
 const int servoOpenPosition = 180; // 165
 const int servoPin = 14;
 int pos = 5;
-int servoCurrentPosition = 165; 
+int servoCurrentPosition = 165;
 int servoRunning = 0;
-#define WITHIN_BOUNDS(x) max(min((x), (servoOpenPosition)), (servoClosePosition))
+#define WITHIN_BOUNDS(x)                                                       \
+  max(min((x), (servoOpenPosition)), (servoClosePosition))
 
 Servo servo;
 unsigned long lastServoMoveTime = 0;
 const int servoSpeed = 10; // milliseconds between servo moves
 
-
 // Create an array of AccelStepper objects
-AccelStepper motors[numMotors] = {
-  {1, motorPins[0][0], motorPins[0][1]},
-  {1, motorPins[1][0], motorPins[1][1]},
-  {1, motorPins[2][0], motorPins[2][1]},
-  {1, motorPins[3][0], motorPins[3][1]},
-  {1, motorPins[4][0], motorPins[4][1]},
-  {1, motorPins[5][0], motorPins[5][1]}
-};
+AccelStepper motors[numMotors] = {{1, motorPins[0][0], motorPins[0][1]},
+                                  {1, motorPins[1][0], motorPins[1][1]},
+                                  {1, motorPins[2][0], motorPins[2][1]},
+                                  {1, motorPins[3][0], motorPins[3][1]},
+                                  {1, motorPins[4][0], motorPins[4][1]},
+                                  {1, motorPins[5][0], motorPins[5][1]}};
 
 void setup() {
   Serial.begin(9600); // Start serial communication at 9600 baud rate
@@ -51,12 +48,13 @@ void setup() {
 void loop() {
   //     int start = 5;
   //     int end = 165;
-  // if (millis() - lastServoMoveTime > servoSpeed) {  // Goes from 0 degrees to 180 degrees
-  //   myservo.write(pos++);        
+  // if (millis() - lastServoMoveTime > servoSpeed) {  // Goes from 0 degrees to
+  // 180 degrees
+  //   myservo.write(pos++);
   //   if (pos > end) {
   //     pos = end;
   //   } else if (pos < start) {
-  //     pos = start; 
+  //     pos = start;
   //   }    // Tell servo to go to position in variable 'pos'
   //   lastServoMoveTime = millis();
   // }
@@ -74,11 +72,14 @@ void loop() {
 
 void executeMotorCommand(String command) {
   for (int i = 0; i < numMotors; i++) {
-    String motorCommand = "M" + String(i+1);
-    if (command.startsWith(motorCommand + "CW")) {
-      motors[i].move(20000);  // Move motor i+1 clockwise
-    } else if (command.startsWith(motorCommand + "CCW")) {
-      motors[i].move(-20000); // Move motor i+1 counterclockwise
+    String motorCommand = "M" + String(i + 1);
+    int commaPosition = command.indexOf(",");
+
+    if (command.startsWith(motorCommand) && commaPosition != -1) {
+      String motorValueStr = command.substring(commaPosition + 1);
+      long motorValue = motorValueStr.toInt();
+      motors[i].move(motorValue);
+
     } else if (command.startsWith(motorCommand + "STOP")) {
       motors[i].stop(); // Stop motor i+1
       // motors[i].disableOutputs(); // Optionally disable outputs to save power
@@ -95,20 +96,17 @@ void executeMotorCommand(String command) {
 
 void moveServoGradually(int state) {
   if (millis() - lastServoMoveTime > servoSpeed) {
-    Serial.println(state);
-    Serial.println(WITHIN_BOUNDS(servo.read() - 1));
     switch (state) {
-      case 1: // M7C (Close the gripper)
-        servo.write(WITHIN_BOUNDS(servo.read() - 1));
-        break;
-      case 2: // M7O (Open the gripper)
-        servo.write(WITHIN_BOUNDS(servo.read() + 1));
-        break;
-      default:
-        // No action needed if the servo is not moving
-        break;
+    case 1: // M7C (Close the gripper)
+      servo.write(WITHIN_BOUNDS(servo.read() - 1));
+      break;
+    case 2: // M7O (Open the gripper)
+      servo.write(WITHIN_BOUNDS(servo.read() + 1));
+      break;
+    default:
+      // No action needed if the servo is not moving
+      break;
     }
     lastServoMoveTime = millis();
   }
 }
-
