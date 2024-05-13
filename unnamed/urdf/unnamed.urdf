@@ -1,0 +1,98 @@
+<robot name="unnamed" version="1.0">
+  <joint name="joint1" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0.48000" velocity="0.66000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+    <parent link="Robotic_Collaborative_Robot_Arm_EB-052_link"/>
+    <child link="Robotic_Collaborative_Robot_Arm_EB-108_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="joint2" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0.48000" velocity="0.66000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+    <parent link="Robotic_Collaborative_Robot_Arm_EB-108_link"/>
+    <child link="new_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <link name="Robotic_Collaborative_Robot_Arm_EB-052_link">
+    <visual name="Robotic_Collaborative_Robot_Arm_EB-052">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/stl/Robotic_Collaborative_Robot_Arm_EB-052.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="Robotic_Collaborative_Robot_Arm_EB-108_link">
+    <visual name="Robotic_Collaborative_Robot_Arm_EB-108">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00090 0.07360"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/stl/Robotic_Collaborative_Robot_Arm_EB-108.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="new_link">
+    <visual name="Robotic_Collaborative_Robot_Arm_EB-018">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.08611 -0.00101 0.18954"/>
+      <material name="mat_1"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/stl/Robotic_Collaborative_Robot_Arm_EB-018.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+    <visual name="Robotic_Collaborative_Robot_Arm_EB-086">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.00211 -0.00100 0.41297"/>
+      <material name="mat_1"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/stl/Robotic_Collaborative_Robot_Arm_EB-086.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+    <visual name="Robotic_Collaborative_Robot_Arm_EB-111">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.52092"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/stl/Robotic_Collaborative_Robot_Arm_EB-111.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+    <visual name="Robotic_Collaborative_Robot_Arm_EB-112">
+      <origin rpy="-0.00000 0.00000 -0.00000" xyz="-0.08538 -0.00100 0.07360"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/stl/Robotic_Collaborative_Robot_Arm_EB-112.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+    <visual name="Robotic_Collaborative_Robot_Arm_EB-146">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.08538 -0.00100 0.29993"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/stl/Robotic_Collaborative_Robot_Arm_EB-146.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+    <visual name="Robotic_Collaborative_Robot_Arm_EB-147">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.08513 -0.00100 0.60393"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/stl/Robotic_Collaborative_Robot_Arm_EB-147.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+    <visual name="Robotic_Collaborative_Robot_Arm_EB-15">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00524 0.00231 0.29029"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/stl/Robotic_Collaborative_Robot_Arm_EB-15.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+    <visual name="Robotic_Collaborative_Robot_Arm_EB-156">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.08513 -0.00103 0.52092"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/stl/Robotic_Collaborative_Robot_Arm_EB-156.stl" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <material name="mat_0">
+    <color rgba="0.21569 0.21569 0.21569 1.00000"/>
+  </material>
+  <material name="mat_1">
+    <color rgba="0.57647 0.57647 0.71373 1.00000"/>
+  </material>
+</robot>

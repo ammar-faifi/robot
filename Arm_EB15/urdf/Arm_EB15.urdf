@@ -1,0 +1,216 @@
+<?xml version="1.0" ?>
+<robot name="Arm_EB15" version="1.0">
+  <joint name="joint1" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0.48000" velocity="0.66000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+    <parent link="base_link"/>
+    <child link="link01"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="joint2" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0.48000" velocity="0.66000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+    <parent link="link01"/>
+    <child link="link02"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="joint3" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0.48000" velocity="0.66000"/>
+    <origin rpy="-0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+    <parent link="link02"/>
+    <child link="link03"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="joint4" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0.48000" velocity="0.66000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+    <parent link="link03"/>
+    <child link="link04"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="joint5" type="revolute">
+    <limit lower="-3.14000" upper="3.14000" effort="0.48000" velocity="0.66000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+    <parent link="link04"/>
+    <child link="link05"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <link name="base_link">
+    <collision name="Arm_EB-052_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00017 -0.00100 0.01493"/>
+      <geometry>
+        <box size="0.10500 0.10497 0.03000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00020" ixy="-0.00000" ixz="-0.00000" iyy="0.00020" iyz="-0.00000" izz="0.00035"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00017 -0.00100 0.01497"/>
+      <mass value="0.30100"/>
+    </inertial>
+    <visual name="Arm_EB-052">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/dae/Arm_EB-052.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="link01">
+    <collision name="Arm_EB-108_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00211 -0.00100 0.07343"/>
+      <geometry>
+        <box size="0.08000 0.07600 0.08500"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00026" ixy="0.00000" ixz="0.00002" iyy="0.00027" iyz="-0.00000" izz="0.00027"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00649 -0.00100 0.07078"/>
+      <mass value="0.30100"/>
+    </inertial>
+    <visual name="Arm_EB-108">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00090 0.07360"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/dae/Arm_EB-108.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="link02">
+    <collision name="Arm_EB-018_collision">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.08611 -0.00100 0.18693"/>
+      <geometry>
+        <box size="0.07600 0.07600 0.14200"/>
+      </geometry>
+    </collision>
+    <collision name="Arm_EB-112_collision">
+      <origin rpy="-0.00000 0.00000 -0.00000" xyz="-0.08561 -0.00100 0.07593"/>
+      <geometry>
+        <box size="0.08500 0.07600 0.08000"/>
+      </geometry>
+    </collision>
+    <collision name="Arm_EB-146_collision">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.08561 -0.00100 0.29793"/>
+      <geometry>
+        <box size="0.08500 0.07600 0.08000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00117" ixy="0.00000" ixz="0.00003" iyy="0.00113" iyz="-0.00000" izz="0.00061"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.08372 -0.00100 0.18827"/>
+      <mass value="0.90300"/>
+    </inertial>
+    <visual name="Arm_EB-018">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.08611 -0.00101 0.18954"/>
+      <material name="mat_1"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/dae/Arm_EB-018.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+    <visual name="Arm_EB-112">
+      <origin rpy="-0.00000 0.00000 -0.00000" xyz="-0.08538 -0.00100 0.07360"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/dae/Arm_EB-112.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+    <visual name="Arm_EB-146">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.08538 -0.00100 0.29993"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/dae/Arm_EB-146.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="link03">
+    <collision name="Arm_EB-086_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00211 -0.00100 0.41293"/>
+      <geometry>
+        <box size="0.06598 0.06600 0.13000"/>
+      </geometry>
+    </collision>
+    <collision name="Arm_EB-111_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00505 -0.00100 0.51593"/>
+      <geometry>
+        <box size="0.07412 0.06600 0.07600"/>
+      </geometry>
+    </collision>
+    <collision name="Arm_EB-15_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00561 -0.00100 0.30493"/>
+      <geometry>
+        <box size="0.07300 0.07600 0.08600"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00105" ixy="-0.00001" ixz="-0.00001" iyy="0.00109" iyz="0.00002" izz="0.00053"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00622 -0.00101 0.40862"/>
+      <mass value="0.90300"/>
+    </inertial>
+    <visual name="Arm_EB-086">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00211 -0.00100 0.41297"/>
+      <material name="mat_1"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/dae/Arm_EB-086.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+    <visual name="Arm_EB-111">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.52092"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/dae/Arm_EB-111.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+    <visual name="Arm_EB-15">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00524 0.00231 0.29029"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/dae/Arm_EB-15.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="link04">
+    <collision name="Arm_EB-156_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.08066 -0.00103 0.52387"/>
+      <geometry>
+        <box size="0.07500 0.06600 0.07412"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00018" ixy="0.00000" ixz="0.00002" iyy="0.00021" iyz="-0.00000" izz="0.00022"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.07128 -0.00101 0.52633"/>
+      <mass value="0.30100"/>
+    </inertial>
+    <visual name="Arm_EB-156">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.08513 -0.00103 0.52092"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/dae/Arm_EB-156.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="link05">
+    <collision name="Arm_EB-147_collision">
+      <origin rpy="-0.00000 0.00000 0.00000" xyz="-0.08810 -0.00100 0.59943"/>
+      <geometry>
+        <box size="0.07412 0.06600 0.07500"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00022" ixy="-0.00000" ixz="0.00001" iyy="0.00023" iyz="-0.00000" izz="0.00021"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.09056 -0.00101 0.59007"/>
+      <mass value="0.30100"/>
+    </inertial>
+    <visual name="Arm_EB-147">
+      <origin rpy="0.00000 0.00000 -0.00000" xyz="-0.08513 -0.00100 0.60393"/>
+      <material name="mat_0"/>
+      <geometry>
+        <mesh filename="package://my_package/meshes/dae/Arm_EB-147.dae" scale="1.00000 1.00000 1.00000"/>
+      </geometry>
+    </visual>
+  </link>
+  <material name="mat_0">
+    <color rgba="0.21569 0.21569 0.21569 1.00000"/>
+  </material>
+  <material name="mat_1">
+    <color rgba="0.57647 0.57647 0.71373 1.00000"/>
+  </material>
+</robot>
